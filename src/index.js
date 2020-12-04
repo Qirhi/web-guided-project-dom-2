@@ -68,6 +68,8 @@ Array.from(document.links).forEach((link) => {
 // make a function that launches the modal
 function launch() {
   modal.classList.toggle('off');
+  successMessage.classList.add('off');
+  failureMessage.classList.add('off');
 }
 launchButton.addEventListener('click', launch);
 
@@ -82,3 +84,27 @@ function close() {
   failureMessage.classList.remove('off');
 }
 cancelButton.addEventListener('click', close);
+
+// keydown event
+function escKey(e) {
+  console.log(e);
+  if(e.key === 'Escape') {
+    modal.classList.add('off');
+  } else if(e.key === 'q') {
+    console.log('qq :)');
+  }
+}
+document.addEventListener('keydown', escKey);
+
+// playing with propagation :(
+Array.from(document.all).forEach((element) => {
+  element.addEventListener('click', (e) => {
+    console.log('target: ', e.target);
+    console.log('currentTarget: ', e.currentTarget);
+    console.log('\n');
+  });
+});
+
+modal.addEventListener('click', (e) => {
+  e.stopPropagation();
+});
