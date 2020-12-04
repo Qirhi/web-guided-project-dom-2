@@ -65,4 +65,20 @@ Array.from(document.links).forEach((link) => {
   });
 });
 
+// make a function that launches the modal
+function launch() {
+  modal.classList.toggle('off');
+}
+launchButton.addEventListener('click', launch);
 
+function confirm() {
+  modal.classList.toggle('off');
+  successMessage.classList.remove('off');
+}
+confirmButton.addEventListener('click', confirm);
+
+function close() {
+  modal.classList.toggle('off');
+  failureMessage.classList.remove('off');
+}
+cancelButton.addEventListener('click', close);
